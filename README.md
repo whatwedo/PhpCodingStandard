@@ -1,3 +1,5 @@
+[![Latest Stable Version](https://poser.pugx.org/whatwedo/php-coding-standard/v/stable)](https://packagist.org/packages/whatwedo/php-coding-standard)
+
 # PhpCodingStandard
 
 This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
