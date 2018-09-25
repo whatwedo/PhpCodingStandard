@@ -1,0 +1,25 @@
+{
+    "name": "whatwedo/php-coding-standard",
+    "type": "library",
+    "description": "Default PHP coding standard at whatwedo",
+    "license": "MIT",
+    "homepage": "https://github.com/whatwedo/PhpCodingStandard",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Felix Imobersteg",
+            "email": "felix@whatwedo.ch"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^1.10",
+        "slevomat/coding-standard": "^4.8",
+        "symplify/easy-coding-standard": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "whatwedo\\PhpCodingStandard\\": ""
+        }
+    }
+}

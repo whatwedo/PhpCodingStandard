@@ -1,0 +1,11 @@
+imports:
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/symfony.yml' }
+    - { resource: 'whatwedo-common.yml' }
+
+services:
+    PhpCsFixerCustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer: ~
+
+parameters:
+    skip:
+        Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff:
+            - '**/Entity/*.php'
