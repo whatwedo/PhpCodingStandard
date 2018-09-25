@@ -1,2 +1,2 @@
 imports:
-- { resource: 'whatwedo-common.yml' }
+    - { resource: 'whatwedo-common.yml' }
