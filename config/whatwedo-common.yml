@@ -2,7 +2,6 @@ imports:
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/clean-code.yml' }
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/common.yml' }
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
-    - { resource: '%vendor_dir%/symplify/coding-standard/config/symplify.yml' }
 
 services:
     PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff: ~
@@ -34,10 +33,10 @@ services:
     SlevomatCodingStandard\Sniffs\Commenting\ForbiddenAnnotationsSniff:
         forbiddenAnnotations:
             - '@author'
+            - '@package'
             - '@created'
             - '@version'
     SlevomatCodingStandard\Sniffs\ControlStructures\AssignmentInConditionSniff: ~
-    SlevomatCodingStandard\Sniffs\ControlStructures\DisallowEmptySniff: ~
     SlevomatCodingStandard\Sniffs\Exceptions\DeadCatch: ~
     SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespace: ~
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff: ~
@@ -64,6 +63,7 @@ parameters:
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer
+        - PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer
         - PhpCsFixer\Fixer\ReturnNotation\ReturnAssignmentFixer
@@ -76,20 +76,11 @@ parameters:
         - SlevomatCodingStandard\Sniffs\Classes\TraitUseSpacingSniff
         - SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff
         - SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff
+        - SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff
         - SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff
         - Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer
-        - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer
-        - Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer
-        - Symplify\CodingStandard\Sniffs\Architecture\ExplicitExceptionSniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\CognitiveComplexitySniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenReferenceSniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff
-        - Symplify\CodingStandard\Sniffs\Commenting\VarConstantCommentSniff
-        - Symplify\CodingStandard\Sniffs\ControlStructure\SprintfOverContactSniff
-        - Symplify\CodingStandard\Sniffs\DeadCode\UnusedPublicMethodSniff
-        - Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff
-        - Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff
 
     skip:
+        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff:
             - '**/whatwedo*.php'
