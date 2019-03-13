@@ -41,11 +41,6 @@ services:
     SlevomatCodingStandard\Sniffs\ControlStructures\AssignmentInConditionSniff: ~
     SlevomatCodingStandard\Sniffs\ControlStructures\DisallowEmptySniff: ~
     SlevomatCodingStandard\Sniffs\Exceptions\DeadCatch: ~
-    SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff:
-        searchAnnotations: true
-        allowFallbackGlobalFunctions: true
-        allowFallbackGlobalConstants: true
-        allowPartialUses: false
     SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespace: ~
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff: ~
 
@@ -66,6 +61,7 @@ parameters:
         - PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer
         - PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer
         - PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer
+        - PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer
@@ -84,6 +80,7 @@ parameters:
         - SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff
         - SlevomatCodingStandard\Sniffs\PHP\UselessSemicolonSniff
         - SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff
+        - Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer
         - Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer
         - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer
         - Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer
@@ -100,3 +97,4 @@ parameters:
     skip:
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff:
             - '**/whatwedo*.php'
+        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
