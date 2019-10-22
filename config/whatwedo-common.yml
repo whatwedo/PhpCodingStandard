@@ -2,7 +2,6 @@ imports:
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/clean-code.yaml' }
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/common.yaml' }
     - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/psr2.yaml' }
-#    - { resource: '%vendor_dir%/symplify/coding-standard/config/set/symplify.yaml' }
 
 services:
     PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff: ~
@@ -26,7 +25,6 @@ services:
         - 'phpunit'
         - 'magic'
         - 'magic'
-    PhpCsFixer\Tokenizer\Analyzer\ArgumentsAnalyzer: ~
     PhpCsFixerCustomFixers\Fixer\NoImportFromGlobalNamespaceFixer: ~
     PhpCsFixerCustomFixers\Fixer\NoNullableBooleanTypeFixer: ~
     PhpCsFixerCustomFixers\Fixer\NoPhpStormGeneratedCommentFixer: ~
@@ -35,10 +33,10 @@ services:
     SlevomatCodingStandard\Sniffs\Commenting\ForbiddenAnnotationsSniff:
         forbiddenAnnotations:
             - '@author'
+            - '@package'
             - '@created'
             - '@version'
     SlevomatCodingStandard\Sniffs\ControlStructures\AssignmentInConditionSniff: ~
-    SlevomatCodingStandard\Sniffs\ControlStructures\DisallowEmptySniff: ~
     SlevomatCodingStandard\Sniffs\Exceptions\DeadCatch: ~
     SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespace: ~
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff: ~
@@ -60,12 +58,12 @@ parameters:
         - PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer
         - PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer
         - PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer
-        - PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer
+        - PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer
         - PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer
         - PhpCsFixer\Fixer\ReturnNotation\ReturnAssignmentFixer
@@ -74,26 +72,15 @@ parameters:
         - PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer
         - PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer
         - PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer
+        - SlamCsFixer\FinalInternalClassFixer
         - SlevomatCodingStandard\Sniffs\Classes\TraitUseSpacingSniff
         - SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff
         - SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff
-        - SlevomatCodingStandard\Sniffs\PHP\UselessSemicolonSniff
+        - SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff
         - SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff
-        - Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer
         - Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer
-        - Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer
-        - Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer
-        - Symplify\CodingStandard\Sniffs\Architecture\ExplicitExceptionSniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\CognitiveComplexitySniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenReferenceSniff
-        - Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff
-        - Symplify\CodingStandard\Sniffs\Commenting\VarConstantCommentSniff
-        - Symplify\CodingStandard\Sniffs\ControlStructure\SprintfOverContactSniff
-        - Symplify\CodingStandard\Sniffs\DeadCode\UnusedPublicMethodSniff
-        - Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff
-        - Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff
 
     skip:
+        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff:
             - '**/whatwedo*.php'
-        SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
