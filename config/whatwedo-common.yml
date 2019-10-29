@@ -1,7 +1,7 @@
 imports:
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/clean-code.yml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/common.yml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/psr2.yml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/clean-code.yaml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/common.yaml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/psr2.yaml' }
 
 services:
     PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff: ~
@@ -42,45 +42,43 @@ services:
     SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff: ~
 
 parameters:
-    exclude_checkers:
-        - PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\AssignmentInConditionSniff
-        - PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures\InlineControlStructureSniff
-        - PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\ScopeIndentSniff
-        - PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ScopeClosingBraceSniff
-        - PhpCsFixer\Fixer\CastNotation\CastSpacesFixer
-        - PhpCsFixer\Fixer\ControlStructure\NoTrailingCommaInListCallFixer
-        - PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer
-        - PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer
-        - PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer
-        - PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer
-        - PhpCsFixer\Fixer\Operator\ConcatSpaceFixer
-        - PhpCsFixer\Fixer\Operator\IncrementStyleFixer
-        - PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer
-        - PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer
-        - PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer
-        - PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer
-        - PhpCsFixer\Fixer\ReturnNotation\ReturnAssignmentFixer
-        - PhpCsFixer\Fixer\Strict\StrictComparisonFixer
-        - PhpCsFixer\Fixer\Strict\StrictParamFixer
-        - PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer
-        - PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer
-        - PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer
-        - SlamCsFixer\FinalInternalClassFixer
-        - SlevomatCodingStandard\Sniffs\Classes\TraitUseSpacingSniff
-        - SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff
-        - SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff
-        - SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff
-        - SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff
-        - Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer
-
     skip:
+        PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\AssignmentInConditionSniff: ~
+        PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures\InlineControlStructureSniff: ~
+        PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\ScopeIndentSniff: ~
+        PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ScopeClosingBraceSniff: ~
+        PhpCsFixer\Fixer\CastNotation\CastSpacesFixer: ~
+        PhpCsFixer\Fixer\ControlStructure\NoTrailingCommaInListCallFixer: ~
+        PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer: ~
+        PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer: ~
+        PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer: ~
+        PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer: ~
+        PhpCsFixer\Fixer\Operator\ConcatSpaceFixer: ~
+        PhpCsFixer\Fixer\Operator\IncrementStyleFixer: ~
+        PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer: ~
+        PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocSeparationFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\PhpdocToCommentFixer: ~
+        PhpCsFixer\Fixer\ReturnNotation\ReturnAssignmentFixer: ~
+        PhpCsFixer\Fixer\Strict\StrictComparisonFixer: ~
+        PhpCsFixer\Fixer\Strict\StrictParamFixer: ~
+        PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer: ~
+        PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer: ~
+        PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer: ~
+        SlamCsFixer\FinalInternalClassFixer: ~
+        SlevomatCodingStandard\Sniffs\Classes\TraitUseSpacingSniff: ~
+        SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff: ~
+        SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff: ~
+        SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff: ~
+        SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff: ~
+        Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer: ~
         SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment: ~
         PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff:
             - '**/whatwedo*.php'

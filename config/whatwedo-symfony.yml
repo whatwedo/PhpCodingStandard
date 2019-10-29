@@ -1,5 +1,5 @@
 imports:
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/symfony.yml' }
+    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/symfony.yaml' }
     - { resource: 'whatwedo-common.yml' }
 
 services:
