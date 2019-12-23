@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.0",
         "kubawerlos/php-cs-fixer-custom-fixers": "^1.10",
-        "slevomat/coding-standard": "^5.0",
+        "slevomat/coding-standard": "^6.0",
         "symplify/easy-coding-standard": "^7.0"
     },
     "autoload": {
