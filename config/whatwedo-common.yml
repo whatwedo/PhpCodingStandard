@@ -1,7 +1,7 @@
 imports:
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/clean-code.yaml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/common.yaml' }
-    - { resource: '%vendor_dir%/symplify/easy-coding-standard/config/set/psr2.yaml' }
+    - { resource: '../../../symplify/easy-coding-standard/config/set/clean-code.yaml' }
+    - { resource: '../../../symplify/easy-coding-standard/config/set/common.yaml' }
+    - { resource: '../../../symplify/easy-coding-standard/config/set/psr2.yaml' }
 
 services:
     PHP_CodeSniffer\Standards\Squiz\Sniffs\Classes\ValidClassNameSniff: ~
