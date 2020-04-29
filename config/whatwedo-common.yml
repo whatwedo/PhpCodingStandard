@@ -25,6 +25,7 @@ services:
         - 'phpunit'
         - 'magic'
         - 'magic'
+    PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer: ~
     PhpCsFixerCustomFixers\Fixer\NoImportFromGlobalNamespaceFixer: ~
     PhpCsFixerCustomFixers\Fixer\NoNullableBooleanTypeFixer: ~
     PhpCsFixerCustomFixers\Fixer\NoPhpStormGeneratedCommentFixer: ~
