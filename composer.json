@@ -15,7 +15,7 @@
         "php": ">=7.2",
         "kubawerlos/php-cs-fixer-custom-fixers": "^2.0",
         "slevomat/coding-standard": "^6.1",
-        "symplify/easy-coding-standard": "^7.2"
+        "symplify/easy-coding-standard": "^8.2"
     },
     "autoload": {
         "psr-4": {
