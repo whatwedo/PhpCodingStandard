@@ -69,7 +69,25 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(FunctionCommentThrowTagSniff::class);
 
     $services->set(OrderedClassElementsFixer::class)
-        ->call('configure', [['order' => ['use_trait', 'constant_public', 'constant_protected', 'constant_private', 'property_public', 'property_protected', 'property_private', 'construct', 'destruct', 'method_public', 'method_protected', 'method_private', 'phpunit', 'magic', 'magic']]]);
+        ->call('configure', [
+            ['order' => [
+                'use_trait',
+                'constant_public',
+                'constant_protected',
+                'constant_private',
+                'property_public',
+                'property_protected',
+                'property_private',
+                'construct',
+                'destruct',
+                'method_public',
+                'method_protected',
+                'method_private',
+                'phpunit',
+                'magic',
+                'magic'
+            ]
+            ]]);
 
     $services->set(NoExtraConsecutiveBlankLinesFixer::class);
 
@@ -93,5 +111,43 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set('skip', [AssignmentInConditionSniff::class => null, InlineControlStructureSniff::class => null, ScopeIndentSniff::class => null, ScopeClosingBraceSniff::class => null, CastSpacesFixer::class => null, NoTrailingCommaInListCallFixer::class => null, YodaStyleFixer::class => null, IsNullFixer::class => null, BlankLineAfterNamespaceFixer::class => null, BinaryOperatorSpacesFixer::class => null, ConcatSpaceFixer::class => null, IncrementStyleFixer::class => null, NotOperatorWithSuccessorSpaceFixer::class => null, UnaryOperatorSpacesFixer::class => null, 'PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer' => null, PhpdocAlignFixer::class => null, PhpdocInlineTagFixer::class => null, PhpdocNoAliasTagFixer::class => null, PhpdocNoEmptyReturnFixer::class => null, PhpdocNoPackageFixer::class => null, PhpdocSeparationFixer::class => null, PhpdocSummaryFixer::class => null, PhpdocToCommentFixer::class => null, ReturnAssignmentFixer::class => null, StrictComparisonFixer::class => null, StrictParamFixer::class => null, BlankLineBeforeStatementFixer::class => null, MethodChainingIndentationFixer::class => null, NoExtraBlankLinesFixer::class => null, 'SlamCsFixer\FinalInternalClassFixer' => null, TraitUseSpacingSniff::class => null, 'SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff' => null, EmptyCommentSniff::class => null, ReferenceUsedNamesOnlySniff::class => null, UselessVariableSniff::class => null, 'Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer' => null, 'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment' => null, ValidClassNameSniff::class => ['**/whatwedo*.php']]);
+    $parameters->set('skip', [
+        AssignmentInConditionSniff::class => null,
+        InlineControlStructureSniff::class => null,
+        ScopeIndentSniff::class => null,
+        ScopeClosingBraceSniff::class => null,
+        CastSpacesFixer::class => null,
+        NoTrailingCommaInListCallFixer::class => null,
+        YodaStyleFixer::class => null,
+        IsNullFixer::class => null,
+        BlankLineAfterNamespaceFixer::class => null,
+        BinaryOperatorSpacesFixer::class => null,
+        ConcatSpaceFixer::class => null,
+        IncrementStyleFixer::class => null,
+        NotOperatorWithSuccessorSpaceFixer::class => null,
+        UnaryOperatorSpacesFixer::class => null,
+        PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer::class => null,
+        PhpdocAlignFixer::class => null,
+        PhpdocInlineTagFixer::class => null,
+        PhpdocNoAliasTagFixer::class => null,
+        PhpdocNoEmptyReturnFixer::class => null,
+        PhpdocNoPackageFixer::class => null,
+        PhpdocSeparationFixer::class => null,
+        PhpdocSummaryFixer::class => null,
+        PhpdocToCommentFixer::class => null,
+        ReturnAssignmentFixer::class => null,
+        StrictComparisonFixer::class => null,
+        StrictParamFixer::class => null,
+        BlankLineBeforeStatementFixer::class => null,
+        MethodChainingIndentationFixer::class => null,
+        NoExtraBlankLinesFixer::class => null,
+        SlamCsFixer\FinalInternalClassFixer::class => null,
+        TraitUseSpacingSniff::class => null,
+        SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff::class => null,
+        EmptyCommentSniff::class => null,
+        ReferenceUsedNamesOnlySniff::class => null,
+        UselessVariableSniff::class => null,
+        Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer::class => null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment' => null,
+        ValidClassNameSniff::class => ['**/whatwedo*.php']]);
 };
