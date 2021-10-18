@@ -16,5 +16,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set('skip', ['Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff' => ['**/Entity/*.php']]);
+    $parameters->set(\Symplify\EasyCodingStandard\ValueObject\Option::SKIP, [
+        \Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff::class => ['**/Entity/*.php'],
+    ]);
 };
