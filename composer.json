@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=7.4",
-        "kubawerlos/php-cs-fixer-custom-fixers": "^2.0",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^3.0",
         "slevomat/coding-standard": "^7.0",
         "symplify/easy-coding-standard": "^9.1"
     },
