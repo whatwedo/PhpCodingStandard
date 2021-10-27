@@ -8,14 +8,9 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
-
     $services->set(NoDoctrineMigrationsGeneratedCommentFixer::class);
 
     $parameters = $containerConfigurator->parameters();
-
-    $parameters->set(\Symplify\EasyCodingStandard\ValueObject\Option::SKIP, [
-        \Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff::class => ['**/Entity/*.php'],
-    ]);
     
     // Import needs to be at the end - SKIP isn't merging (https://github.com/symplify/symplify/issues/2906)
     $containerConfigurator->import(SetList::SYMFONY);
