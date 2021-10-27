@@ -49,14 +49,13 @@ use SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff;
 use SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespaceSniff;
 use SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/clean-code.php');
-
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/common.php');
-
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/psr12.php');
+    $containerConfigurator->import(SetList::CLEAN_CODE);
+    $containerConfigurator->import(SetList::COMMON);
+    $containerConfigurator->import(SetList::PSR_12);
 
     $services = $containerConfigurator->services();
 
