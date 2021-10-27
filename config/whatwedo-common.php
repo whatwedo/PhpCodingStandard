@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Symplify\EasyCodingStandard\ValueObject\Option;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\AssignmentInConditionSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures\InlineControlStructureSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\ScopeIndentSniff;
@@ -110,7 +111,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set('skip', [
+    $parameters->set(Option::PARALLEL, true);
+
+    $parameters->set(Option::SKIP, [
         AssignmentInConditionSniff::class => null,
         InlineControlStructureSniff::class => null,
         ScopeIndentSniff::class => null,
