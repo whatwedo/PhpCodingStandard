@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Symplify\EasyCodingStandard\ValueObject\Option;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\AssignmentInConditionSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures\InlineControlStructureSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\WhiteSpace\ScopeIndentSniff;
@@ -49,14 +50,13 @@ use SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff;
 use SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespaceSniff;
 use SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/clean-code.php');
-
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/common.php');
-
-    $containerConfigurator->import(__DIR__ . '/../../../symplify/easy-coding-standard/config/set/psr12.php');
+    $containerConfigurator->import(SetList::CLEAN_CODE);
+    $containerConfigurator->import(SetList::COMMON);
+    $containerConfigurator->import(SetList::PSR_12);
 
     $services = $containerConfigurator->services();
 
@@ -111,7 +111,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set('skip', [
+    $parameters->set(Option::PARALLEL, true);
+
+    $parameters->set(Option::SKIP, [
         AssignmentInConditionSniff::class => null,
         InlineControlStructureSniff::class => null,
         ScopeIndentSniff::class => null,
@@ -147,7 +149,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         EmptyCommentSniff::class => null,
         ReferenceUsedNamesOnlySniff::class => null,
         UselessVariableSniff::class => null,
-        Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer::class => null,
-        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment' => null,
-        ValidClassNameSniff::class => ['**/whatwedo*.php']]);
+
+        ClassCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.WrongStyle' => null,
+
+        ValidClassNameSniff::class => ['**/whatwedo*.php']
+    ]);
 };
