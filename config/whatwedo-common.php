@@ -146,7 +146,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         EmptyCommentSniff::class => null,
         ReferenceUsedNamesOnlySniff::class => null,
         UselessVariableSniff::class => null,
-        Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer::class => null,
-        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment' => null,
-        ValidClassNameSniff::class => ['**/whatwedo*.php']]);
+
+        ClassCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.WrongStyle' => null,
+
+        ValidClassNameSniff::class => ['**/whatwedo*.php']
+    ]);
 };
