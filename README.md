@@ -20,29 +20,45 @@ composer require whatwedo/php-coding-standard
 You can run the checks without project specific configuration using one of following commands:
 
 ```
-vendor/bin/ecs check src --config vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.yml # Symfony projects
-vendor/bin/ecs check src --config vendor/whatwedo/php-coding-standard/config/whatwedo-wordpress.yml # Wordpress projects
-vendor/bin/ecs check src --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.yml # Common PHP projects
+vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php # Symfony projects
+vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-wordpress.php # WordPress projects
+vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.php # Common PHP projects
 ```
 
 
 ### With custom configuration
 
-If you want to add additional checkers or exclude files, you have to create an `easy-coding-standard.yml` in your own project root directory. Start with adding one checker of this project. 
+If you want to add additional checkers or exclude files, you have to create an `ecs.php` file in your own project root directory.
 
-```yaml
-imports:
-    - { resource: '%vendor_dir%/whatwedo/php-coding-standard/config/whatwedo-symfony.yml' } # Symfony projects only
-    - { resource: '%vendor_dir%/whatwedo/php-coding-standard/config/whatwedo-wordpress.ym' } # Wordpress projects only
-    - { resource: '%vendor_dir%/whatwedo/php-coding-standard/config/whatwedo-common.ym' } # Common projects only
+```php
+<?php
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator->parameters();
+    // Modify rules with $parameters->set()
+
+    // Import needs to be at the end - SKIP isn't merging (https://github.com/symplify/symplify/issues/2906)
+    $containerConfigurator->import(__DIR__. '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php');
+};
 ```
+
+Then run the following command:
+
+```
+vendor/bin/ecs check SRC_DIRECTORY
+```
+
+To fix certain issues automatically add `--fix` add the end
 
 For other configuration options, check out [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
 
 
 ## Dependencies
 
-* PHP >=7.0
+* PHP >=7.4
 * [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard)
 * [kubawerlos/php-cs-fixer-custom-fixers](https://github.com/kubawerlos/php-cs-fixer-custom-fixers)
 * [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
