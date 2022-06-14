@@ -11,7 +11,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(NoDoctrineMigrationsGeneratedCommentFixer::class);
 
     $parameters = $containerConfigurator->parameters();
-    
+
     // Import needs to be at the end - SKIP isn't merging (https://github.com/symplify/symplify/issues/2906)
     $containerConfigurator->import(SetList::SYMFONY);
     $containerConfigurator->import(__DIR__ . '/whatwedo-common.php');
