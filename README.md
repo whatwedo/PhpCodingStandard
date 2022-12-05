@@ -34,14 +34,22 @@ If you want to add additional checkers or exclude files, you have to create an `
 <?php
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-    // Modify rules with $parameters->set()
+return static function (ECSConfig $ecsConfig): void {
+    /*
+    // Remove rules with $ecsConfig->skip()
+    $ecsConfig->skip([
+        SlevomatCodingStandard\Sniffs\Variables\UnusedVariableSniff::class => null,
 
-    // Import needs to be at the end - SKIP isn't merging (https://github.com/symplify/symplify/issues/2906)
-    $containerConfigurator->import(__DIR__. '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php');
+        // Explicitly remove some rules in a specific files
+        PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer::class => [
+            __DIR__ . '/PATH/FILE.php'
+        ],
+    ]);
+    */
+
+    $ecsConfig->import(__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php');
 };
 ```
 
