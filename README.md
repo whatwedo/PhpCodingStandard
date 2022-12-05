@@ -49,7 +49,8 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
     */
 
-    $ecsConfig->import(__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php');
+    // This need to come last
+    $ecsConfig->sets([__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php']);
 };
 ```
 
