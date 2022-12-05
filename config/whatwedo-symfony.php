@@ -7,7 +7,7 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 use PhpCsFixerCustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer;
 
 return static function (ECSConfig $ecsConfig): void {
-    $ecsConfig->import(__DIR__ . '/whatwedo-common.php');
+    $ecsConfig->sets([__DIR__ . '/whatwedo-common.php']);
 
     $ecsConfig->rule(NoDoctrineMigrationsGeneratedCommentFixer::class);
 };
