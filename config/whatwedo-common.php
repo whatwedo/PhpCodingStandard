@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Fixer\ClassNotation\FinalInternalClassFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\CodeAnalysis\AssignmentInConditionSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures\InlineControlStructureSniff;
@@ -23,7 +24,7 @@ use PhpCsFixer\Fixer\Operator\IncrementStyleFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
-use PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagFixer;
+use PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagNormalizerFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoAliasTagFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoEmptyReturnFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocNoPackageFixer;
@@ -48,7 +49,6 @@ use SlevomatCodingStandard\Sniffs\Exceptions\DeadCatchSniff;
 use SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff;
 use SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespaceSniff;
 use SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff;
-use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ECSConfig $ecsConfig): void {
@@ -108,9 +108,8 @@ return static function (ECSConfig $ecsConfig): void {
             IncrementStyleFixer::class => null,
             NotOperatorWithSuccessorSpaceFixer::class => null,
             UnaryOperatorSpacesFixer::class => null,
-            PhpCsFixer\Fixer\Phpdoc\BlankLineBeforeStatementFixer::class => null,
             PhpdocAlignFixer::class => null,
-            PhpdocInlineTagFixer::class => null,
+            PhpdocInlineTagNormalizerFixer::class => null,
             PhpdocNoAliasTagFixer::class => null,
             PhpdocNoEmptyReturnFixer::class => null,
             PhpdocNoPackageFixer::class => null,
@@ -123,9 +122,8 @@ return static function (ECSConfig $ecsConfig): void {
             BlankLineBeforeStatementFixer::class => null,
             MethodChainingIndentationFixer::class => null,
             NoExtraBlankLinesFixer::class => null,
-            SlamCsFixer\FinalInternalClassFixer::class => null,
+            FinalInternalClassFixer::class => null,
             TraitUseSpacingSniff::class => null,
-            SlevomatCodingStandard\Sniffs\Classes\UnusedPrivateElementsSniff::class => null,
             EmptyCommentSniff::class => null,
             ReferenceUsedNamesOnlySniff::class => null,
             UselessVariableSniff::class => null,
