@@ -22,6 +22,7 @@ use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Operator\IncrementStyleFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
+use PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer;
 use PhpCsFixer\Fixer\Operator\UnaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocInlineTagNormalizerFixer;
@@ -92,7 +93,12 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-
+    
+    $ecsConfig->ruleWithConfiguration(\PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer::class, [
+        'only_booleans' => true,
+        'position' => 'beginning',
+    ]);
+    
     $ecsConfig->skip([
             AssignmentInConditionSniff::class => null,
             InlineControlStructureSniff::class => null,
