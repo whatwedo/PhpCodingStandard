@@ -79,6 +79,9 @@ return static function (ECSConfig $ecsConfig): void {
             'magic',
         ],
     ]);
+    $ecsConfig->ruleWithConfiguration(ConcatSpaceFixer::class, [
+        'spacing' => 'none',
+    ]);
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(NoNullableBooleanTypeFixer::class);
     $ecsConfig->rule(NoPhpStormGeneratedCommentFixer::class);
@@ -109,8 +112,6 @@ return static function (ECSConfig $ecsConfig): void {
             YodaStyleFixer::class => null,
             IsNullFixer::class => null,
             BlankLineAfterNamespaceFixer::class => null,
-            BinaryOperatorSpacesFixer::class => null,
-            ConcatSpaceFixer::class => null,
             IncrementStyleFixer::class => null,
             NotOperatorWithSuccessorSpaceFixer::class => null,
             UnaryOperatorSpacesFixer::class => null,
