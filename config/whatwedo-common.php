@@ -17,7 +17,6 @@ use PhpCsFixer\Fixer\ControlStructure\NoTrailingCommaInListCallFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer;
-use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Operator\IncrementStyleFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer;
@@ -79,9 +78,6 @@ return static function (ECSConfig $ecsConfig): void {
             'magic',
         ],
     ]);
-    $ecsConfig->ruleWithConfiguration(ConcatSpaceFixer::class, [
-        'spacing' => 'none',
-    ]);
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(NoNullableBooleanTypeFixer::class);
     $ecsConfig->rule(NoPhpStormGeneratedCommentFixer::class);
@@ -136,9 +132,9 @@ return static function (ECSConfig $ecsConfig): void {
         ReferenceUsedNamesOnlySniff::class => null,
         UselessVariableSniff::class => null,
 
-        ClassCommentSniff::class.'.Missing' => null,
-        FileCommentSniff::class.'.Missing' => null,
-        FileCommentSniff::class.'.WrongStyle' => null,
+        ClassCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.WrongStyle' => null,
         ValidClassNameSniff::class => ['**/whatwedo*.php'],
     ]);
 
