@@ -17,7 +17,6 @@ use PhpCsFixer\Fixer\ControlStructure\NoTrailingCommaInListCallFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer;
-use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Operator\IncrementStyleFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer;
@@ -78,9 +77,6 @@ return static function (ECSConfig $ecsConfig): void {
             'phpunit',
             'magic',
         ],
-    ]);
-    $ecsConfig->ruleWithConfiguration(ConcatSpaceFixer::class, [
-        'spacing' => 'none',
     ]);
     $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(NoNullableBooleanTypeFixer::class);
