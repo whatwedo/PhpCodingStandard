@@ -6,7 +6,7 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->paths([
-        __DIR__.'/',
+        __DIR__ . '/',
     ]);
     $ecsConfig->import('config/whatwedo-common.php');
 };
