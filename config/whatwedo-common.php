@@ -132,9 +132,9 @@ return static function (ECSConfig $ecsConfig): void {
         ReferenceUsedNamesOnlySniff::class => null,
         UselessVariableSniff::class => null,
 
-        ClassCommentSniff::class.'.Missing' => null,
-        FileCommentSniff::class.'.Missing' => null,
-        FileCommentSniff::class.'.WrongStyle' => null,
+        ClassCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.Missing' => null,
+        FileCommentSniff::class . '.WrongStyle' => null,
         ValidClassNameSniff::class => ['**/whatwedo*.php'],
     ]);
 
