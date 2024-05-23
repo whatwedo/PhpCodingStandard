@@ -87,11 +87,6 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->rule(AssignmentInConditionSniff::class);
     $ecsConfig->rule(DeadCatchSniff::class);
     $ecsConfig->rule(UseFromSameNamespaceSniff::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(DumpFixer::class);
 
     $ecsConfig->ruleWithConfiguration(OperatorLinebreakFixer::class, [
