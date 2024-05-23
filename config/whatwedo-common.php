@@ -56,6 +56,8 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->sets([SetList::COMMON]);
     $ecsConfig->sets([SetList::PSR_12]);
 
+    $ecsConfig->dynamicSets(['@PER-CS2.0']);
+
     $ecsConfig->rule(ValidClassNameSniff::class);
     $ecsConfig->rule(ClassCommentSniff::class);
     $ecsConfig->rule(FileCommentSniff::class);
