@@ -49,7 +49,7 @@ use SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespaceSniff;
 use SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
-use whatwedo\PhpCodingStandard\DumpFixer;
+use whatwedo\PhpCodingStandard\DumpFixer\Fixer;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->sets([SetList::CLEAN_CODE]);
