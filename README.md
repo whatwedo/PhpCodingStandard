@@ -73,6 +73,23 @@ For other configuration options, check out [Simplify/EasyCodingStandard](https:/
 * [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
 
 
+## PHP CS Fixer integration (experimental)
+
+copy the the file [.php-cs-fixer.dist.php](.php-cs-fixer.dist.php) to your project root.
+
+use  `vendor/bin/php-cs-fixer check`y 
+
+
+```php
+<?php
+
+/** @var $fixerConfig \PhpCsFixer\Config */
+return $fixerConfig = require __DIR__. '/vendor/whatwedo/php-coding-standard/config/phpcsfixer-symfony.php';
+
+```
+
+
+
 ## License
 
 This bundle is under the MIT license. See the complete license in the bundle: [LICENSE](LICENSE)
