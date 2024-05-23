@@ -49,7 +49,7 @@ use SlevomatCodingStandard\Sniffs\Namespaces\UseFromSameNamespaceSniff;
 use SlevomatCodingStandard\Sniffs\Variables\UselessVariableSniff;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
-use whatwedo\PhpCodingStandard\DumpFixer;
+use whatwedo\PhpCodingStandard\Fixer\DumpFixer;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->sets([SetList::CLEAN_CODE]);
@@ -87,11 +87,6 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->rule(AssignmentInConditionSniff::class);
     $ecsConfig->rule(DeadCatchSniff::class);
     $ecsConfig->rule(UseFromSameNamespaceSniff::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
-    $ecsConfig->rule(NoImportFromGlobalNamespaceFixer::class);
     $ecsConfig->rule(DumpFixer::class);
 
     $ecsConfig->ruleWithConfiguration(OperatorLinebreakFixer::class, [

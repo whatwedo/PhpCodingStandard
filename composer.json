@@ -22,11 +22,11 @@
         "php": ">=7.4",
         "kubawerlos/php-cs-fixer-custom-fixers": "^3.0",
         "slevomat/coding-standard": "^8.5",
-        "symplify/easy-coding-standard": "^11.1"
+        "symplify/easy-coding-standard": "^12.1"
     },
     "autoload": {
         "psr-4": {
-            "whatwedo\\PhpCodingStandard\\": ""
+            "whatwedo\\PhpCodingStandard\\":  "src/"
         }
     },
     "config": {
