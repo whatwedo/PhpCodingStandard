@@ -41,6 +41,8 @@ use PhpCsFixer\Tokenizer\Tokens;
  */
 final class DumpFixer extends AbstractFunctionReferenceFixer
 {
+    use FixerTrait;
+
     private array $functions = ['dump', 'var_dump', 'dd'];
 
     public function isCandidate(Tokens $tokens): bool
