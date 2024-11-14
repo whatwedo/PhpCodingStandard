@@ -4,9 +4,9 @@ namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
 use PhpCsFixer;
 
-class Php38CsFixerConfig
+class Php38CsFixerConfig implements WwdPhpCsFixerConfigInterface
 {
-    public static function createFixer(string $projectDir): PhpCsFixer\ConfigInterface
+    public static function createConfig(string $projectDir): PhpCsFixer\ConfigInterface
     {
         $finder = new PhpCsFixer\Finder();
         self::configureFinder($finder, $projectDir);
