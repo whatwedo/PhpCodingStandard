@@ -13,8 +13,6 @@ class SymfonyCsFixerConfig implements WwdPhpCsFixerConfigInterface
 
         $config = new PhpCsFixer\Config();
         $config->setFinder($finder);
-        BaseCsFixerConfig::configure($config);
-        Php38CsFixerConfig::configure($config);
         self::configure($config);
         return $config;
     }
@@ -37,16 +35,21 @@ class SymfonyCsFixerConfig implements WwdPhpCsFixerConfigInterface
 
     public static function configure(PhpCsFixer\ConfigInterface $config)
     {
-        $existingRulues = $config->getRules();
+
         $config
             ->setRiskyAllowed(true)
             ->setRules(
-                array_merge(
-                    $existingRulues,
-                    [
-                        '@Symfony' => true,
-                    ]
-                )
+                [
+                    '@PER-CS' => true,
+                    '@PSR12' => true,
+                    '@PHP83Migration' => true,
+                    '@Symfony' => true,
+                    'strict_param' => true,
+                    // make ecs compatible
+                    'phpdoc_to_comment' => false,
+                    'single_line_throw' => false,
+                ]
+
             );
     }
 }
