@@ -4,7 +4,7 @@ namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
 use PhpCsFixer;
 
-class SymfonyCsFixerConfig
+class BaseCsFixerConfig
 {
     public static function createFixer(string $projectDir): PhpCsFixer\ConfigInterface
     {
@@ -13,8 +13,6 @@ class SymfonyCsFixerConfig
 
         $config = new PhpCsFixer\Config();
         $config->setFinder($finder);
-        BaseCsFixerConfig::configure($config);
-        Php38CsFixerConfig::configure($config);
         self::configure($config);
         return $config;
     }
@@ -23,20 +21,11 @@ class SymfonyCsFixerConfig
     public static function configureFinder(PhpCsFixer\Finder $finder, string $projectDir)
     {
         $finder->in($projectDir)
-            ->exclude([
-                    'assets',
-                    'bin',
-                    'config',
-                    'node_modules',
-                    'public',
-                    'vendor',
-                    'var',
-                ]
-            );
+;
     }
-
     public static function configure(PhpCsFixer\ConfigInterface $config)
     {
+
         $existingRulues = $config->getRules();
         $config
             ->setRiskyAllowed(true)
@@ -44,7 +33,12 @@ class SymfonyCsFixerConfig
                 array_merge(
                     $existingRulues,
                     [
-                        '@Symfony' => true,
+                        '@PER-CS' => true,
+                        '@PSR12' => true,
+                        'strict_param' => true,
+                        // make ecs compatible
+                        'phpdoc_to_comment' => false,
+                        'single_line_throw' => false,
                     ]
                 )
             );

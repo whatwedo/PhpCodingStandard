@@ -4,7 +4,7 @@ namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
 use PhpCsFixer;
 
-class SymfonyCsFixerConfig
+class Php38CsFixerConfig
 {
     public static function createFixer(string $projectDir): PhpCsFixer\ConfigInterface
     {
@@ -13,8 +13,6 @@ class SymfonyCsFixerConfig
 
         $config = new PhpCsFixer\Config();
         $config->setFinder($finder);
-        BaseCsFixerConfig::configure($config);
-        Php38CsFixerConfig::configure($config);
         self::configure($config);
         return $config;
     }
@@ -23,18 +21,8 @@ class SymfonyCsFixerConfig
     public static function configureFinder(PhpCsFixer\Finder $finder, string $projectDir)
     {
         $finder->in($projectDir)
-            ->exclude([
-                    'assets',
-                    'bin',
-                    'config',
-                    'node_modules',
-                    'public',
-                    'vendor',
-                    'var',
-                ]
-            );
+;
     }
-
     public static function configure(PhpCsFixer\ConfigInterface $config)
     {
         $existingRulues = $config->getRules();
@@ -44,7 +32,7 @@ class SymfonyCsFixerConfig
                 array_merge(
                     $existingRulues,
                     [
-                        '@Symfony' => true,
+                        '@PHP83Migration' => true,
                     ]
                 )
             );
