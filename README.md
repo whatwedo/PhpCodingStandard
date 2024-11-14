@@ -63,6 +63,35 @@ To fix certain issues automatically add `--fix` add the end
 
 For other configuration options, check out [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
 
+## Usage with PHP CS Fixer *Experimental*
+
+add `.php-cs-fixer.dist.php` in your project
+
+```php
+<?php
+
+use whatwedo\PhpCodingStandard\PhpCsFixerConfig\SymfonyCsFixerConfig;
+
+// create preconfigured Config
+$config = SymfonyCsFixerConfig::createConfig(__DIR__);
+
+// exclude some custom directories
+$config->getFinder()->exclude(
+    [
+        'data',
+        'doc',
+        'docker',
+        'drivers',
+        'vendor-bin',
+    ]);
+
+// add some project rules
+// be careful, can be tricky, rules are dependent of the order    
+$existingRules = $config->getRules();
+$existingRules['some_new_rule'] => true;
+
+return $config;
+```
 
 ## Dependencies
 
