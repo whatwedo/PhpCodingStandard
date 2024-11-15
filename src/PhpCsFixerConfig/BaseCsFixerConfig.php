@@ -2,40 +2,23 @@
 
 namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
-use PhpCsFixer;
-
 class BaseCsFixerConfig implements WwdPhpCsFixerConfigInterface
 {
-    public static function createConfig(string $projectDir): PhpCsFixer\ConfigInterface
+    public static function getRules(): array
     {
-        $finder = new PhpCsFixer\Finder();
-        self::configureFinder($finder, $projectDir);
+        return [
+            100 => ['@PER-CS' => true],
+            200 => ['@PSR12' => true],
 
-        $config = new PhpCsFixer\Config();
-        $config->setFinder($finder);
-        self::configure($config);
-        return $config;
+            10000 => ['strict_param' => true],
+            // make ecs compatible
+            15000 => ['phpdoc_to_comment' => false],
+            16000 => ['single_line_throw' => false],
+        ];
     }
 
-
-    public static function configureFinder(PhpCsFixer\Finder $finder, string $projectDir)
+    public static function getExcludes(): array
     {
-        $finder->in($projectDir);
-    }
-
-    public static function configure(PhpCsFixer\ConfigInterface $config)
-    {
-        $config
-            ->setRiskyAllowed(true)
-            ->setRules(
-                [
-                    '@PER-CS' => true,
-                    '@PSR12' => true,
-                    'strict_param' => true,
-                    // make ecs compatible
-                    'phpdoc_to_comment' => false,
-                    'single_line_throw' => false,
-                ]
-            );
+        return [];
     }
 }

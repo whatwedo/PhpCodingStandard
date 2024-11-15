@@ -70,25 +70,19 @@ add `.php-cs-fixer.dist.php` in your project
 ```php
 <?php
 
+use whatwedo\PhpCodingStandard\PhpCsFixerConfig\BaseCsFixerConfig;
 use whatwedo\PhpCodingStandard\PhpCsFixerConfig\SymfonyCsFixerConfig;
+use whatwedo\PhpCodingStandard\PhpCsFixerConfigBuilder;
 
-// create preconfigured Config
-$config = SymfonyCsFixerConfig::createConfig(__DIR__);
+$configs = [
+    SymfonyCsFixerConfig::class,
+    BaseCsFixerConfig::class,
+];
+//PhpCsFixerConfigBuilder::dumpRules($configs);
+//PhpCsFixerConfigBuilder::dumpExcludes($configs);
 
-// exclude some custom directories
-$config->getFinder()->exclude(
-    [
-        'data',
-        'doc',
-        'docker',
-        'drivers',
-        'vendor-bin',
-    ]);
 
-// add some project rules
-// be careful, can be tricky, rules are dependent of the order    
-$existingRules = $config->getRules();
-$existingRules['some_new_rule'] => true;
+$config = PhpCsFixerConfigBuilder::build(__DIR__, $configs);
 
 return $config;
 ```
