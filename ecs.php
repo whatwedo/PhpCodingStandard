@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ECSConfig $ecsConfig): void {
-    $ecsConfig->paths([
-        __DIR__ . '/',
+return static function (ECSConfig $config): void {
+    $config->paths([
+        'src',
+        'tests',
     ]);
-    $ecsConfig->import('config/whatwedo-common.php');
+    $config->skip([]);
+    $config->import('vendor/whatwedo/php-coding-standard/config/whatwedo-common.php');
 };
