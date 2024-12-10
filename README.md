@@ -3,6 +3,7 @@
 # PhpCodingStandard
 
 This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
+It's based on PER Coding Style 2.0 (https://www.php-fig.org/per/coding-style/).
 
 ## Installation
 
@@ -20,15 +21,13 @@ composer require whatwedo/php-coding-standard
 You can run the checks without project specific configuration using one of following commands:
 
 ```
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php # Symfony projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-wordpress.php # WordPress projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.php # Common PHP projects
+vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.php
 ```
-
 
 ### With custom configuration
 
-If you want to add additional checkers or exclude files, you have to create an `ecs.php` file in your own project root directory.
+But we suggest to create an `ecs.php` file in your own project root directory.
+There's a sample configuration file in the root of this repository.
 
 ```php
 <?php
@@ -36,10 +35,10 @@ declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ECSConfig $ecsConfig): void {
+return static function (ECSConfig $config): void {
     /*
-    // Remove rules with $ecsConfig->skip()
-    $ecsConfig->skip([
+    // Remove rules with $config->skip()
+    $config->skip([
         SlevomatCodingStandard\Sniffs\Variables\UnusedVariableSniff::class => null,
 
         // Explicitly remove some rules in a specific files
@@ -50,7 +49,7 @@ return static function (ECSConfig $ecsConfig): void {
     */
 
     // This need to come last
-    $ecsConfig->sets([__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php']);
+    $config->sets([__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php']);
 };
 ```
 
