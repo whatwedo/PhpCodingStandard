@@ -13,10 +13,12 @@ use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ScopeClosingBraceSniff;
 use PhpCsFixer\Fixer\CastNotation\CastSpacesFixer;
 use PhpCsFixer\Fixer\ClassNotation\FinalInternalClassFixer;
 use PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer;
-use PhpCsFixer\Fixer\ControlStructure\NoTrailingCommaInListCallFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
+use PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer;
+use PhpCsFixer\Fixer\FunctionNotation\PhpdocToReturnTypeFixer;
 use PhpCsFixer\Fixer\LanguageConstruct\IsNullFixer;
 use PhpCsFixer\Fixer\NamespaceNotation\BlankLineAfterNamespaceFixer;
+use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Operator\IncrementStyleFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Operator\OperatorLinebreakFixer;
@@ -36,6 +38,8 @@ use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer;
 use PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\NoExtraBlankLinesFixer;
+use PhpCsFixerCustomFixers\Fixer\MultilinePromotedPropertiesFixer;
+use PhpCsFixerCustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer;
 use PhpCsFixerCustomFixers\Fixer\NoImportFromGlobalNamespaceFixer;
 use PhpCsFixerCustomFixers\Fixer\NoNullableBooleanTypeFixer;
 use PhpCsFixerCustomFixers\Fixer\NoPhpStormGeneratedCommentFixer;
@@ -55,6 +59,7 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->sets([SetList::CLEAN_CODE]);
     $ecsConfig->sets([SetList::COMMON]);
     $ecsConfig->sets([SetList::PSR_12]);
+    $ecsConfig->dynamicSets(['@PER-CS2.0']);
 
     $ecsConfig->rule(ValidClassNameSniff::class);
     $ecsConfig->rule(ClassCommentSniff::class);
@@ -84,14 +89,21 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->rule(PhpdocSelfAccessorFixer::class);
     $ecsConfig->rule(PhpdocVarAnnotationCorrectOrderFixer::class);
     $ecsConfig->rule(ForbiddenAnnotationsSniff::class);
-    $ecsConfig->rule(AssignmentInConditionSniff::class);
     $ecsConfig->rule(DeadCatchSniff::class);
     $ecsConfig->rule(UseFromSameNamespaceSniff::class);
+    $ecsConfig->rule(MultilinePromotedPropertiesFixer::class);
     $ecsConfig->rule(DumpFixer::class);
-
     $ecsConfig->ruleWithConfiguration(OperatorLinebreakFixer::class, [
         'only_booleans' => true,
         'position' => 'beginning',
+    ]);
+    $ecsConfig->rule(PhpdocToReturnTypeFixer::class);
+    $ecsConfig->rule(PhpdocToParamTypeFixer::class);
+    $ecsConfig->rule(NoDoctrineMigrationsGeneratedCommentFixer::class);
+
+    // https://github.com/whatwedo/PhpCodingStandard/issues/15
+    $ecsConfig->ruleWithConfiguration(ConcatSpaceFixer::class, [
+        'spacing' => 'none',
     ]);
 
     $ecsConfig->skip([
@@ -100,7 +112,6 @@ return static function (ECSConfig $ecsConfig): void {
         ScopeIndentSniff::class => null,
         ScopeClosingBraceSniff::class => null,
         CastSpacesFixer::class => null,
-        NoTrailingCommaInListCallFixer::class => null,
         YodaStyleFixer::class => null,
         IsNullFixer::class => null,
         BlankLineAfterNamespaceFixer::class => null,
