@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * This file is used to check the coding standards itself in this project.
+ */
+
 declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
