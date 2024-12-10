@@ -75,7 +75,6 @@ use whatwedo\PhpCodingStandard\PhpCsFixerConfig\SymfonyCsFixerConfig;
 use whatwedo\PhpCodingStandard\PhpCsFixerConfigBuilder;
 
 $configs = [
-    SymfonyCsFixerConfig::class,
     BaseCsFixerConfig::class,
 ];
 //PhpCsFixerConfigBuilder::dumpRules($configs);
