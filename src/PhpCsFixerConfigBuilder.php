@@ -23,6 +23,7 @@ class PhpCsFixerConfigBuilder
             ->exclude($excludes);
 
         $config = new PhpCsFixer\Config();
+        self::configure($config, $configs);
         $config->setFinder($finder)
             ->setRiskyAllowed(true)
             ->setRules(self::buildRules($configs));
@@ -95,5 +96,13 @@ class PhpCsFixerConfigBuilder
             }
         }
         return $excludes;
+    }
+
+    private static function configure(PhpCsFixer\Config $config, array $configs)
+    {
+        /** @var WwdPhpCsFixerConfigInterface $configurationSet */
+        foreach ($configs as $configurationSet) {
+            $configurationSet::configure($config);
+        }
     }
 }

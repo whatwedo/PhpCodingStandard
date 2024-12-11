@@ -2,6 +2,8 @@
 
 namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
+use PhpCsFixer\ConfigInterface;
+
 class BaseCsFixerConfig implements WwdPhpCsFixerConfigInterface
 {
     public static function getRules(): array
@@ -30,7 +32,6 @@ class BaseCsFixerConfig implements WwdPhpCsFixerConfigInterface
                 ],
                 'phpdoc_to_comment' => false,
                 'single_line_throw' => false,
-
             ],
 
         ];
@@ -40,4 +41,11 @@ class BaseCsFixerConfig implements WwdPhpCsFixerConfigInterface
     {
         return [];
     }
+
+    public static function configure(ConfigInterface $config): void
+    {
+        $config->registerCustomFixers(new \PhpCsFixerCustomFixers\Fixers());
+    }
+
+
 }

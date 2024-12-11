@@ -2,6 +2,8 @@
 
 namespace whatwedo\PhpCodingStandard\PhpCsFixerConfig;
 
+use PhpCsFixer\ConfigInterface;
+
 interface WwdPhpCsFixerConfigInterface
 {
     /**
@@ -10,4 +12,6 @@ interface WwdPhpCsFixerConfigInterface
     public static function getRules(): array;
 
     public static function getExcludes(): array;
+
+    public static function configure(ConfigInterface $config): void;
 }
