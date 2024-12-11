@@ -35,10 +35,11 @@ If you don't use PHPStan or similar for static type checking, that could be a pr
 - Add `MultilinePromotedPropertiesFixer` (https://github.com/whatwedo/PhpCodingStandard/issues/27)
 - Add `PhpdocToReturnTypeFixer` and `PhpdocToParamTypeFixer`
 - `NoDoctrineMigrationsGeneratedCommentFixer` is now part of the default configuration (https://github.com/whatwedo/PhpCodingStandard/issues/16)
-- `ConcatSpaceFixer` => `'spacing' => 'none'` is now part of the default configuration (https://github.com/whatwedo/PhpCodingStandard/issues/15)
+- `ConcatSpaceFixer` => `'spacing' => 'one'` was added (https://github.com/whatwedo/PhpCodingStandard/issues/15)
 
 ### Removed
 - Remove deprecated `NoTrailingCommaInListCallFixer`
+- `ConcatSpaceFixer` => `'spacing' => 'none'` was replaced with `'spacing' => 'one'` for projects with the Symfony rule set in place
 - `AssignmentInConditionSniff` is skipped
 
 ---

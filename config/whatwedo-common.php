@@ -103,7 +103,7 @@ return static function (ECSConfig $ecsConfig): void {
 
     // https://github.com/whatwedo/PhpCodingStandard/issues/15
     $ecsConfig->ruleWithConfiguration(ConcatSpaceFixer::class, [
-        'spacing' => 'none',
+        'spacing' => 'one',
     ]);
 
     $ecsConfig->skip([
