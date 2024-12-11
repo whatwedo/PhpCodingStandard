@@ -3,7 +3,7 @@
 namespace whatwedo\PhpCodingStandard;
 
 use PhpCsFixer;
-use PhpCsFixer\ConfigInterface;
+use PhpCsFixer\ParallelAwareConfigInterface;
 use whatwedo\PhpCodingStandard\PhpCsFixerConfig\WwdPhpCsFixerConfigInterface;
 
 class PhpCsFixerConfigBuilder
@@ -14,7 +14,7 @@ class PhpCsFixerConfigBuilder
     public static function build(
         string $projectDir,
         array  $configs
-    ): ConfigInterface
+    ): ParallelAwareConfigInterface
     {
         $excludes = self::buildExcludes($configs);
 

@@ -71,7 +71,6 @@ add `.php-cs-fixer.dist.php` in your project
 <?php
 
 use whatwedo\PhpCodingStandard\PhpCsFixerConfig\BaseCsFixerConfig;
-use whatwedo\PhpCodingStandard\PhpCsFixerConfig\SymfonyCsFixerConfig;
 use whatwedo\PhpCodingStandard\PhpCsFixerConfigBuilder;
 
 $configs = [
