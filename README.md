@@ -71,6 +71,12 @@ For other configuration options, check out [Simplify/EasyCodingStandard](https:/
 * [kubawerlos/php-cs-fixer-custom-fixers](https://github.com/kubawerlos/php-cs-fixer-custom-fixers)
 * [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
 
+## Contributing
+
+Feel free to contribute to this project. We are always open for suggestions and improvements.
+
+Don't forget to check adjustments within this project with the coding standards as well.
+Run `make ecs` to check for coding standard violations and fix them.
 
 ## License
 
