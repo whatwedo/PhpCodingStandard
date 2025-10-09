@@ -6,10 +6,10 @@ This project is a set of coding standard rules, which we are using at [whatwedo]
 
 ## Installation
 
-We suggest to use Composer to install this project:
+We suggest to use Composer to install our package as a dev-requirement:
 
 ```
-composer require whatwedo/php-coding-standard
+composer require --dev whatwedo/php-coding-standard
 ```
 
 
