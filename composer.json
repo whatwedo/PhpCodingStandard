@@ -21,7 +21,7 @@
     "require": {
         "php": ">=7.4",
         "kubawerlos/php-cs-fixer-custom-fixers": "^v3.32.0",
-        "slevomat/coding-standard": "^8.20.0",
+        "slevomat/coding-standard": "~8.22.1",
         "symplify/easy-coding-standard": "^12.5.23"
     },
     "autoload": {
