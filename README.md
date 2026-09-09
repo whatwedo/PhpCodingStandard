@@ -25,6 +25,11 @@ project type:
 
 The Symfony and the WordPress set both include the common set, so there is no need to reference more than one.
 
+Every set builds on [PER Coding Style 3.0](https://www.php-fig.org/per/coding-style/), the successor of
+PSR-12. Coming from an older release, expect the first run to reformat existing code, most visibly by
+adding a trailing comma to multiline argument and parameter lists. Imports keep being sorted
+alphabetically, which PER-CS leaves open.
+
 ```php
 <?php
 declare(strict_types=1);
