@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /*
  * Copyright (c) 2023, whatwedo GmbH
  * All rights reserved
@@ -36,7 +37,8 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Tokens;
 
 /**
- * @author Andrew Kovalyov <andrew.kovalyoff@gmail.com>
+ * Based on the original implementation by Andrew Kovalyov <andrew.kovalyoff@gmail.com>.
+ *
  * @see https://raw.githubusercontent.com/akovalyov/DebugStatementsFixers/master/src/Dump.php
  */
 final class DumpFixer extends AbstractFunctionReferenceFixer
