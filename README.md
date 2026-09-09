@@ -61,7 +61,7 @@ For other configuration options, check out [Simplify/EasyCodingStandard](https:/
 
 ## Dependencies
 
-* PHP >=7.4
+* PHP >=8.2
 * [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard)
 * [kubawerlos/php-cs-fixer-custom-fixers](https://github.com/kubawerlos/php-cs-fixer-custom-fixers)
 * [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
