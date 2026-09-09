@@ -33,7 +33,10 @@
 - drop `SetList::CLEAN_CODE` (imported by `SetList::COMMON` in full) and 17 skips that
   targeted rules no longer shipped by any ECS 13 set; the effective checker list is
   unchanged
-- update to `symplify/easy-coding-standard ^13`, which bundles php-cs-fixer 3.95 and
+- require PHP 8.2 or newer, up from 7.4. The dependencies still install on 7.4, so this
+  is a floor set on purpose: the standard is only run and verified on PHP versions that
+  still receive security support
+- update to `symplify/easy-coding-standard ^13.3.2`, which bundles php-cs-fixer 3.95 and
   PHP_CodeSniffer 4 — running the whatwedo standard can report additional findings on
   code that passed under ECS 12
 - allow `kubawerlos/php-cs-fixer-custom-fixers ^3` and `slevomat/coding-standard ^8`
