@@ -3,10 +3,13 @@
 declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
+use whatwedo\PhpCodingStandard\Set\WhatwedoSets;
 
-return static function (ECSConfig $ecsConfig): void {
-    $ecsConfig->paths([
-        __DIR__ . '/',
+return ECSConfig::configure()
+    ->withPaths([
+        __DIR__ . '/config',
+        __DIR__ . '/src',
+    ])
+    ->withSets([
+        WhatwedoSets::COMMON,
     ]);
-    $ecsConfig->import('config/whatwedo-common.php');
-};

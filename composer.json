@@ -19,10 +19,10 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "kubawerlos/php-cs-fixer-custom-fixers": ">=3.32,<3.37.3",
-        "slevomat/coding-standard": "~8.22.1",
-        "symplify/easy-coding-standard": "^12.5.23"
+        "php": ">=8.2",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^3",
+        "slevomat/coding-standard": "^8",
+        "symplify/easy-coding-standard": "^13.3.2"
     },
     "autoload": {
         "psr-4": {
