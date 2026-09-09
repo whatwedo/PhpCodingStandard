@@ -2,33 +2,28 @@
 
 # PhpCodingStandard
 
-This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
+This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on 
+[Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
 
 ## Installation
 
 We suggest to use Composer to install this project:
 
 ```
-composer require whatwedo/php-coding-standard
+composer require --dev whatwedo/php-coding-standard
 ```
 
 
 ## Usage
 
-### Without custom configuration
+You have to create an `ecs.php` file in your own project root directory and reference the set matching your
+project type:
 
-You can run the checks without project specific configuration using one of following commands:
+* Symfony projects: `config/whatwedo-symfony.php`
+* WordPress projects: `config/whatwedo-wordpress.php`
+* Any other PHP project: `config/whatwedo-common.php`
 
-```
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php # Symfony projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-wordpress.php # WordPress projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.php # Common PHP projects
-```
-
-
-### With custom configuration
-
-If you want to add additional checkers or exclude files, you have to create an `ecs.php` file in your own project root directory.
+The Symfony and the WordPress set both include the common set, so there is no need to reference more than one.
 
 ```php
 <?php
@@ -36,22 +31,14 @@ declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ECSConfig $ecsConfig): void {
-    /*
-    // Remove rules with $ecsConfig->skip()
-    $ecsConfig->skip([
-        SlevomatCodingStandard\Sniffs\Variables\UnusedVariableSniff::class => null,
-
-        // Explicitly remove some rules in a specific files
-        PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer::class => [
-            __DIR__ . '/PATH/FILE.php'
-        ],
+return ECSConfig::configure()
+    ->withPaths([
+        __DIR__ . '/src',
+    ])
+    ->withSets([
+        // Symfony project, see the list above for WordPress and plain PHP projects
+        __DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php',
     ]);
-    */
-
-    // This need to come last
-    $ecsConfig->sets([__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php']);
-};
 ```
 
 Then run the following command:
