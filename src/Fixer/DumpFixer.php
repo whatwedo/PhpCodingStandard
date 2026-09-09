@@ -54,7 +54,7 @@ final class DumpFixer extends AbstractFunctionReferenceFixer
     {
         return new FixerDefinition(
             'Removes dump/var_dump statements, which shouldn\'t be in production ever.',
-            [new CodeSample("<?php\nvar_dump(false);")]
+            [new CodeSample("<?php\nvar_dump(false);")],
         );
     }
 
@@ -62,10 +62,10 @@ final class DumpFixer extends AbstractFunctionReferenceFixer
     {
         foreach ($this->functions as $function) {
             $currIndex = 0;
-            while (null !== $currIndex) {
+            while ($currIndex !== null) {
                 $matches = $this->find($function, $tokens, $currIndex);
 
-                if (null === $matches) {
+                if ($matches === null) {
                     break;
                 }
 
