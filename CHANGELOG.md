@@ -3,6 +3,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- `WhatwedoSets::COMMON`, `::SYMFONY` and `::WORDPRESS` carry the paths to the shipped
+  sets, so an `ecs.php` references a class constant instead of spelling out
+  `vendor/whatwedo/php-coding-standard/config/whatwedo-*.php` by hand — passing the file
+  path keeps working
+
 ### Changed
 
 - drop `SetList::CLEAN_CODE` (imported by `SetList::COMMON` in full) and 17 skips that

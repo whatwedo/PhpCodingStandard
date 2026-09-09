@@ -19,9 +19,9 @@ composer require --dev whatwedo/php-coding-standard
 You have to create an `ecs.php` file in your own project root directory and reference the set matching your
 project type:
 
-* Symfony projects: `config/whatwedo-symfony.php`
-* WordPress projects: `config/whatwedo-wordpress.php`
-* Any other PHP project: `config/whatwedo-common.php`
+* Symfony projects: `WhatwedoSets::SYMFONY`
+* WordPress projects: `WhatwedoSets::WORDPRESS`
+* Any other PHP project: `WhatwedoSets::COMMON`
 
 The Symfony and the WordPress set both include the common set, so there is no need to reference more than one.
 
@@ -30,21 +30,23 @@ The Symfony and the WordPress set both include the common set, so there is no ne
 declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
+use whatwedo\PhpCodingStandard\Set\WhatwedoSets;
 
 return ECSConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
+        __DIR__ . '/tests',
     ])
     ->withSets([
         // Symfony project, see the list above for WordPress and plain PHP projects
-        __DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php',
+        WhatwedoSets::SYMFONY,
     ]);
 ```
 
 Then run the following command:
 
 ```
-vendor/bin/ecs check SRC_DIRECTORY
+vendor/bin/ecs check
 ```
 
 To fix certain issues automatically add `--fix` add the end
