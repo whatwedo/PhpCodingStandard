@@ -2,14 +2,15 @@
 declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
+use whatwedo\PhpCodingStandard\Set\WhatwedoSets;
 
 return ECSConfig::configure()
     ->withSets([
-        'vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php'
+        WhatwedoSets::SYMFONY,
     ])
     ->withPaths([
-        'src',
-        'tests',
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
     ])
     ->withSkip([
         ])
