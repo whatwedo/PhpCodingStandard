@@ -49,4 +49,12 @@ final class WhatwedoSets
      * @var string
      */
     public const WORDPRESS = __DIR__ . '/../../config/whatwedo-wordpress.php';
+
+    /**
+     * The whatwedo rules without a base set. Only useful when composing a set of your own;
+     * reference COMMON, SYMFONY or WORDPRESS instead.
+     *
+     * @var string
+     */
+    public const RULES = __DIR__ . '/../../config/whatwedo-rules.php';
 }
