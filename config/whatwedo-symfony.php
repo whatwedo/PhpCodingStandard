@@ -5,11 +5,13 @@ declare(strict_types=1);
 use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixerCustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
+use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 use whatwedo\PhpCodingStandard\Set\WhatwedoSets;
 
 return ECSConfig::configure()
     ->withSets([
         WhatwedoSets::COMMON,
+        SetList::DOCTRINE_ANNOTATIONS,
     ])
     ->withRules([
         NoDoctrineMigrationsGeneratedCommentFixer::class,

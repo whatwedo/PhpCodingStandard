@@ -34,6 +34,9 @@
   sets bring along, are skipped, so a short `$this->foo()->bar()` stays on one line
   instead of being split into one call per line, and a deliberately wrapped builder
   chain keeps its own breaks and indentation
+- the Symfony set adds `SetList::DOCTRINE_ANNOTATIONS`, so the indentation, spacing and
+  array assignments inside Doctrine annotations are formatted — the first run reformats
+  projects that still carry mapping or validation in docblocks rather than attributes
 - drop `SetList::CLEAN_CODE` (imported by `SetList::COMMON` in full) and 17 skips that
   targeted rules no longer shipped by any ECS 13 set; the effective checker list is
   unchanged
