@@ -16,10 +16,9 @@
   now apply as the sets intend: casts are spaced (`(int) $x`), comparisons drop the Yoda
   order (`$x === null`, and an existing `null === $x` is rewritten), `$i ++` becomes
   `$i++`, broken PHPDoc inline tags are normalised (`@{TAG}` to `{@TAG}`), `@return null`
-  and `@subpackage` are dropped, a blank line follows the `namespace` statement, every
-  call in a method chain is indented to one level, and every operator in a multiline
-  expression moves to the beginning of the continuation line instead of only `&&` and
-  `||`.
+  and `@subpackage` are dropped, a blank line follows the `namespace` statement, and
+  every operator in a multiline expression moves to the beginning of the continuation
+  line instead of only `&&` and `||`.
   Two of the overrides said nothing to begin with: the skip on `NoExtraBlankLinesFixer`
   had no effect, because `PER_CS` narrows that fixer to blank lines between imports and
   `NoBlankLineBetweenImportsFixer` already removes those, and the `position` set next to
@@ -30,6 +29,11 @@
   spacing, `?int` type formatting, `Foo::bar` spacing and single-line empty bodies. Imports
   keep being sorted alphabetically and `declare()` parentheses keep being checked, both of
   which the PER-CS set leaves to the caller
+- the line breaks and the indentation of a method chain are left to the author:
+  `MethodChainingNewlineFixer` and `MethodChainingIndentationFixer`, which the ECS 13
+  sets bring along, are skipped, so a short `$this->foo()->bar()` stays on one line
+  instead of being split into one call per line, and a deliberately wrapped builder
+  chain keeps its own breaks and indentation
 - drop `SetList::CLEAN_CODE` (imported by `SetList::COMMON` in full) and 17 skips that
   targeted rules no longer shipped by any ECS 13 set; the effective checker list is
   unchanged
