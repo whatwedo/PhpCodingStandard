@@ -6,23 +6,15 @@
     "homepage": "https://github.com/whatwedo/PhpCodingStandard",
     "authors": [
         {
-            "name": "Felix Imobersteg",
-            "email": "felix@whatwedo.ch"
-        },
-        {
-            "name": "Marc Wieland",
-            "email": "marc@whatwedo.ch"
-        },
-        {
-            "name": "Maurizio Monticelli",
-            "email": "maurizio@whatwedo.ch"
+            "name": "whatwedo GmbH",
+            "email": "welove@whatwedo.ch"
         }
     ],
     "require": {
         "php": ">=8.2",
-        "kubawerlos/php-cs-fixer-custom-fixers": "~3.37.4",
-        "slevomat/coding-standard": "~8.31.1",
-        "symplify/easy-coding-standard": "~13.3.7"
+        "kubawerlos/php-cs-fixer-custom-fixers": "^3",
+        "slevomat/coding-standard": "^8",
+        "symplify/easy-coding-standard": "^13.3.2"
     },
     "autoload": {
         "psr-4": {
