@@ -20,9 +20,9 @@
     ],
     "require": {
         "php": ">=8.2",
-        "kubawerlos/php-cs-fixer-custom-fixers": "^3",
-        "slevomat/coding-standard": "^8",
-        "symplify/easy-coding-standard": "^13.3.2"
+        "kubawerlos/php-cs-fixer-custom-fixers": "~3.37.4",
+        "slevomat/coding-standard": "~8.31.1",
+        "symplify/easy-coding-standard": "~13.3.7"
     },
     "autoload": {
         "psr-4": {
