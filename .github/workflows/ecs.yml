@@ -1,0 +1,28 @@
+name: ECS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ecs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      - uses: ramsey/composer-install@v3
+
+      - run: make ecs
+
+      # make ecs applies its fixes, so a dirty working tree means the code was not formatted
+      - run: git diff --exit-code
