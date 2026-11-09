@@ -2,62 +2,56 @@
 
 # PhpCodingStandard
 
-This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
+This project is a set of coding standard rules, which we are using at [whatwedo](https://whatwedo.ch). It's heavily based on 
+[Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard).
 
 ## Installation
 
 We suggest to use Composer to install this project:
 
 ```
-composer require whatwedo/php-coding-standard
+composer require --dev whatwedo/php-coding-standard
 ```
 
 
 ## Usage
 
-### Without custom configuration
+You have to create an `ecs.php` file in your own project root directory and reference the set matching your
+project type:
 
-You can run the checks without project specific configuration using one of following commands:
+* Symfony projects: `WhatwedoSets::SYMFONY`
+* WordPress projects: `WhatwedoSets::WORDPRESS`
+* Any other PHP project: `WhatwedoSets::COMMON`
 
-```
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-symfony.php # Symfony projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-wordpress.php # WordPress projects
-vendor/bin/ecs check SRC_DIRECTORY --config vendor/whatwedo/php-coding-standard/config/whatwedo-common.php # Common PHP projects
-```
+The Symfony and the WordPress set both include the common set, so there is no need to reference more than one.
 
-
-### With custom configuration
-
-If you want to add additional checkers or exclude files, you have to create an `ecs.php` file in your own project root directory.
+Every set builds on [PER Coding Style 3.0](https://www.php-fig.org/per/coding-style/), the successor of
+PSR-12. Coming from an older release, expect the first run to reformat existing code, most visibly by
+adding a trailing comma to multiline argument and parameter lists. Imports keep being sorted
+alphabetically, which PER-CS leaves open.
 
 ```php
 <?php
 declare(strict_types=1);
 
 use Symplify\EasyCodingStandard\Config\ECSConfig;
+use whatwedo\PhpCodingStandard\Set\WhatwedoSets;
 
-return static function (ECSConfig $ecsConfig): void {
-    /*
-    // Remove rules with $ecsConfig->skip()
-    $ecsConfig->skip([
-        SlevomatCodingStandard\Sniffs\Variables\UnusedVariableSniff::class => null,
-
-        // Explicitly remove some rules in a specific files
-        PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer::class => [
-            __DIR__ . '/PATH/FILE.php'
-        ],
+return ECSConfig::configure()
+    ->withPaths([
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
+    ])
+    ->withSets([
+        // Symfony project, see the list above for WordPress and plain PHP projects
+        WhatwedoSets::SYMFONY,
     ]);
-    */
-
-    // This need to come last
-    $ecsConfig->sets([__DIR__ . '/vendor/whatwedo/php-coding-standard/config/whatwedo-common.php']);
-};
 ```
 
 Then run the following command:
 
 ```
-vendor/bin/ecs check SRC_DIRECTORY
+vendor/bin/ecs check
 ```
 
 To fix certain issues automatically add `--fix` add the end
@@ -67,7 +61,7 @@ For other configuration options, check out [Simplify/EasyCodingStandard](https:/
 
 ## Dependencies
 
-* PHP >=7.4
+* PHP >=8.2
 * [Simplify/EasyCodingStandard](https://github.com/Symplify/EasyCodingStandard)
 * [kubawerlos/php-cs-fixer-custom-fixers](https://github.com/kubawerlos/php-cs-fixer-custom-fixers)
 * [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
