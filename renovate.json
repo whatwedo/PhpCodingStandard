@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Europe/Zurich",
+  "labels": ["dependencies"],
+  "reviewers": ["rugbymauri", "tuxes3"],
+  "minimumReleaseAge": "4 days",
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "description": "Every new version of the coding standard tools can change the formatting result, so the patch pins move in one reviewed pull request and ship with a release of this package",
+      "matchManagers": ["composer"],
+      "groupName": "coding standard tools",
+      "groupSlug": "coding-standard-tools",
+      "automerge": false
+    },
+    {
+      "description": "The PHP floor is a deliberate decision, not a dependency to keep current",
+      "matchManagers": ["composer"],
+      "matchDepNames": ["php"],
+      "enabled": false
+    },
+    {
+      "description": "Keep the GitHub Actions of the ECS workflow current in one pull request",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "groupSlug": "github-actions"
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  }
+}
