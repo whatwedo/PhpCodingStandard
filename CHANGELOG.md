@@ -43,11 +43,13 @@
 - require PHP 8.2 or newer, up from 7.4. The dependencies still install on 7.4, so this
   is a floor set on purpose: the standard is only run and verified on PHP versions that
   still receive security support
-- update to `symplify/easy-coding-standard ^13.3.2`, which bundles php-cs-fixer 3.95 and
+- update to `symplify/easy-coding-standard ~13.3.7`, which bundles php-cs-fixer 3.95 and
   PHP_CodeSniffer 4 — running the whatwedo standard can report additional findings on
   code that passed under ECS 12
-- allow `kubawerlos/php-cs-fixer-custom-fixers ^3` and `slevomat/coding-standard ^8`
-  again, the version caps ECS 12 needed are no longer required
+- pin `symplify/easy-coding-standard ~13.3.7`, `kubawerlos/php-cs-fixer-custom-fixers
+  ~3.37.5` and `slevomat/coding-standard ~8.31.1` to patch releases, so a new upstream
+  minor release cannot change the formatting result without a release of this package.
+  The version caps ECS 12 needed are gone
 
 ### Removed
 
