@@ -12,7 +12,7 @@ jobs:
   ecs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -20,7 +20,7 @@ jobs:
           tools: composer:v2
           coverage: none
 
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@4.0.0
 
       - run: make ecs
 
