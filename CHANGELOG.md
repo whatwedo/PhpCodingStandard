@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [2.0.1] - 2026-11-23
+
+### Changed
+
+- update `slevomat/coding-standard` to `~8.31.3` and `symplify/easy-coding-standard`
+  to `~13.3.23` — running the whatwedo standard can report additional findings on code
+  that passed under 2.0.0
+
+
 ## [2.0.0] - 2026-11-16
 
 ### Added
