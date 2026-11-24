@@ -111,6 +111,33 @@ Every tag is created on a `release/vX.Y` branch, never on `main`.
 Packagist picks up the tags automatically. A maintenance branch stays open as long as we still ship
 patches for that series; once it is dropped, no further tags are created on it.
 
+### Automated releases
+
+The [Release workflow](.github/workflows/release.yml) releases the dependency updates that Renovate brings
+into `main`. It is started by hand under *Actions → Release → Run workflow*, and only by Maurizio
+(`rugbymauri`), Nicolo (`tuxes3`) or Ueli (`xarem`); a run is a dry run unless that box is unticked.
+
+It compares the `require` section of `composer.json` at the last release tag with `main`. The largest
+version step among the dependencies decides the release, following the [Versioning](#versioning) table:
+
+| Largest dependency step | Release    | Switched on with the repository variable |
+|-------------------------|------------|------------------------------------------|
+| patch                   | `vX.Y.Z+1` | `AUTO_RELEASE_PATCH=true`                |
+| minor                   | `vX.Y+1.0` | `AUTO_RELEASE_MINOR=true`                |
+| major                   | `vX+1.0.0` | `AUTO_RELEASE_MAJOR=true`                |
+
+The variables live under *Settings → Secrets and variables → Actions → Variables*. A level that is not
+switched on is only reported in the run summary. The workflow follows the steps of [Releasing](#releasing):
+a patch merges `main` into the existing `release/vX.Y`, a minor or major opens a new `release/vX.Y` from
+`main`. It writes the changelog entry from the updated constraints and pushes the branch and the tag.
+
+It does not release, and leaves the release to a human, as soon as something needs judgment: `main`
+changed files other than `composer.json`, `composer.lock`, `renovate.json` or `.github/` since the last
+release, a package was added or removed, the PHP requirement changed, `composer.json` changed outside of
+`require`, or the release branch carries an `[Unreleased]` changelog section.
+
+The tags it creates are annotated but not signed.
+
 ## License
 
 By contributing you agree that your contribution is licensed under the [MIT license](LICENSE).
