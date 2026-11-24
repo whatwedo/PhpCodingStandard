@@ -59,8 +59,9 @@ consuming projects, not by our public PHP API — the API of this package is eff
 |--------------------------------------------------------------|-----------|
 | **Major version bump of a dependency** (see below)           | **major** |
 | Adding, removing or reconfiguring a rule/fixer               | minor     |
+| Minor version bump of a dependency                           | minor     |
 | Raising the minimum PHP version                              | major     |
-| Minor/patch bump of a dependency, docs, internal refactoring | patch     |
+| Patch bump of a dependency, docs, internal refactoring       | patch     |
 
 ### Dependency majors trigger a major release
 
