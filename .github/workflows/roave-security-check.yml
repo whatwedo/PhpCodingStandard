@@ -1,0 +1,37 @@
+name: Roave Security Check
+
+# Resolves the dependencies together with roave/security-advisories, which
+# conflicts with every version that has a known vulnerability. The resolution
+# fails when the constraints in composer.json leave no safe version to install.
+# The weekly run catches advisories published after the last change, before the
+# Monday release.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Mondays 05:00 UTC, an hour before the release
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  roave-security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      - uses: ramsey/composer-install@4.0.0
+
+      # --dry-run leaves composer.json untouched; a conflict still fails the step
+      - run: composer require --dev --dry-run --no-interaction --no-progress roave/security-advisories:dev-latest
