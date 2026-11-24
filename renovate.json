@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
   "timezone": "Europe/Zurich",
   "labels": ["dependencies"],
   "reviewers": ["rugbymauri", "tuxes3"],
@@ -21,7 +21,7 @@
       "enabled": false
     },
     {
-      "description": "Keep the GitHub Actions of the ECS workflow current in one pull request",
+      "description": "Keep the GitHub Actions of all workflows current in one pull request, pinned to the commit of their release",
       "matchManagers": ["github-actions"],
       "groupName": "github actions",
       "groupSlug": "github-actions"

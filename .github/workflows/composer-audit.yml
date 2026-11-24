@@ -1,0 +1,38 @@
+name: Composer Audit
+
+# Checks the dependencies a fresh install resolves to against the security
+# advisories known to Packagist. The weekly run catches advisories published
+# after the last change, before the Monday release.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Mondays 05:00 UTC, an hour before the release
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  composer-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+
+      # No composer.lock is committed, so this resolves the newest versions the
+      # constraints in composer.json allow, as a consumer would get them
+      - uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
+
+      - run: composer audit --no-interaction
