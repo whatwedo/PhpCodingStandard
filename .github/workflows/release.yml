@@ -1,0 +1,52 @@
+name: Release
+
+# Releases the dependency updates merged into main since the last release. Which
+# release levels may run is switched per level with the repository variables
+# AUTO_RELEASE_PATCH, AUTO_RELEASE_MINOR and AUTO_RELEASE_MAJOR ("true" = on).
+# Only the maintainers listed in the first step may start it.
+# See CONTRIBUTING.md, section "Automated releases".
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Prepare the release but push nothing
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check who started the release
+        env:
+          ACTOR: ${{ github.triggering_actor }}
+        run: |
+          case "$ACTOR" in
+            rugbymauri | tuxes3 | xarem) ;;
+            *) echo "::error::$ACTOR may not start a release"; exit 1 ;;
+          esac
+
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Release
+        run: .github/scripts/auto-release.sh
+        env:
+          RELEASE_PATCH: ${{ vars.AUTO_RELEASE_PATCH }}
+          RELEASE_MINOR: ${{ vars.AUTO_RELEASE_MINOR }}
+          RELEASE_MAJOR: ${{ vars.AUTO_RELEASE_MAJOR }}
+          DRY_RUN: ${{ inputs.dry_run }}
